@@ -78,14 +78,14 @@ const sessionsOption = {
     }
 };
 
-// app.get("/", (req,res) =>{
-//     res.send("HI, I AM ROOT");
-// });
+
+
 
 
 
 app.use(session(sessionsOption));
 app.use(flash());
+
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -102,14 +102,9 @@ app.use((req ,res , next) => {
     next();
 });
 
-// app.get("/demouser", async(req,res) => {
-//     let fakeUser = new User({
-//         email: "student@gmail.com",
-//         username: "delta-student"
-//     });
-//   let registeredUser =  await User.register(fakeUser, "hello world");
-//   res.send(registeredUser);
-// });
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+  });
 
 
 app.use("/listings" ,listingRouter);
